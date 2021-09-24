@@ -1,0 +1,17 @@
+{
+    "name": "mijora/VenipakCod",
+    "description": "Venipak COD module",
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Mijora"
+        }
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Venipak\\Cod\\": ""
+        }
+    },
+    "version": "1.0.0"
+}

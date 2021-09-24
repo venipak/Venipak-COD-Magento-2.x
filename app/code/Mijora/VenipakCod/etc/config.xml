@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <venipak_cod>
+                <active>0</active>
+                <model>Mijora\VenipakCod\Model\Cod</model>
+                <order_status>pending</order_status>
+                <title>Venipak COD</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </venipak_cod>
+        </payment>
+    </default>
+</config>
