@@ -50,7 +50,13 @@ class ShippingInformationManagement
     {
         
         $quote = $this->quoteRepository->getActive($cartId);
-        $shipping_price = $quote->getShippingAddress()->getShippingAmount();
+        $address = $quote->getShippingAddress();
+        $rate = $address->getShippingRateByCode($addressInformation->getShippingCarrierCode() . '_' . $addressInformation->getShippingMethodCode());
+        if ($rate) {
+            $shipping_price = $rate->getPrice();
+        } else {
+            $shipping_price = $address->getShippingAmount();
+        }
         $subtotal_price = $quote->getSubtotal();
         $total_price = $shipping_price + $subtotal_price;
         if ($this->feeType == "fixed"){
