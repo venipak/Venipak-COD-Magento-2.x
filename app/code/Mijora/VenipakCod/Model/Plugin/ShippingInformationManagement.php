@@ -42,8 +42,9 @@ class ShippingInformationManagement
      * @param $cartId
      * @param \Magento\Checkout\Api\Data\ShippingInformationInterface $addressInformation
      */
-    public function beforeSaveAddressInformation(
+    public function afterSaveAddressInformation(
         \Magento\Checkout\Model\ShippingInformationManagement $subject,
+        $result,
         $cartId,
         \Magento\Checkout\Api\Data\ShippingInformationInterface $addressInformation
     )
@@ -69,5 +70,7 @@ class ShippingInformationManagement
             $this->fee = 0;
         }
         $quote->setVenipakCodFee($this->fee);
+        $quote->save();
+        return $result;
     }
 }
