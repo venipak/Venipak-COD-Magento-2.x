@@ -79,7 +79,11 @@ class Cod extends \Magento\Payment\Model\Method\AbstractMethod {
             return false; //can't use this method if cart contains virtual products
         }
         //if pickpoint, check if it supports COD
-        if (strtolower($quote->getShippingAddress()->getShippingMethod()) === "venipak_pickup_point") {
+        $shipping_method = $quote->getShippingAddress()->getShippingMethod();
+        if ( empty($shipping_method) ) {
+            return true;
+        }
+        if (strtolower($shipping_method) === "venipak_pickup_point") {
             $pickup_point = $this->carrier->getOrderPickup($quote);
             
             if ($pickup_point !== false && $pickup_point->cod_enabled){
